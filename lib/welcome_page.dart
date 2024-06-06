@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:restaurant/delayed_animation.dart';
+import 'package:restaurant/login_page.dart';
 // ignore: unused_import
 import 'package:restaurant/main.dart';
-import 'package:restaurant/social_page.dart';
+import 'package:restaurant/pages/auth_page.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
@@ -59,7 +60,7 @@ class WelcomePage extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const SocialPage(),
+                            builder: (context) => const AuthPage(),
                           ));
                     },
                     child: const Text('GET STARTED'),

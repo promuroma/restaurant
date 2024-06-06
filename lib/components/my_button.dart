@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:restaurant/delayed_animation.dart';
 
 class MyButton extends StatelessWidget {
   final Function()? onTap;
@@ -13,7 +14,7 @@ class MyButton extends StatelessWidget {
         padding: const EdgeInsets.all(25),
         margin: const EdgeInsets.symmetric(horizontal: 25),
         decoration: BoxDecoration(
-          color: Colors.black,
+          color: d_blue,
           borderRadius: BorderRadius.circular(8),
         ),
         child: const Center(
