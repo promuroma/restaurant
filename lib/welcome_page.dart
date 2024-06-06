@@ -11,6 +11,7 @@ class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[300],
       body: SingleChildScrollView(
         child: Container(
           margin: const EdgeInsets.symmetric(
@@ -58,7 +59,7 @@ class WelcomePage extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => SocialPage(),
+                            builder: (context) => const SocialPage(),
                           ));
                     },
                     child: const Text('GET STARTED'),

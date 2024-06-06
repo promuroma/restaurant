@@ -30,7 +30,7 @@ class _DelayedAnimationState extends State<DelayedAnimation>
     final curve =
         CurvedAnimation(parent: _controller, curve: Curves.decelerate);
     _animOffset = Tween<Offset>(
-      begin: Offset(0.0, -0.35),
+      begin: const Offset(0.0, -0.35),
       end: Offset.zero,
     ).animate(curve);
 
@@ -39,6 +39,7 @@ class _DelayedAnimationState extends State<DelayedAnimation>
     });
   }
 
+  @override
   Widget build(BuildContext context) {
     return FadeTransition(
       opacity: _controller,

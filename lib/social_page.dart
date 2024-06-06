@@ -11,7 +11,7 @@ class SocialPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white.withOpacity(0),
+        backgroundColor: Colors.grey[300],
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back,
@@ -23,6 +23,7 @@ class SocialPage extends StatelessWidget {
           },
         ),
       ),
+      backgroundColor: Colors.grey[300],
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -80,7 +81,7 @@ class SocialPage extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const LoginPage()));
+                                  builder: (context) => LoginPage()));
                         },
                         style: ElevatedButton.styleFrom(
                             shape: const StadiumBorder(),
@@ -111,7 +112,7 @@ class SocialPage extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const LoginPage()));
+                                  builder: (context) => LoginPage()));
                         },
                         style: ElevatedButton.styleFrom(
                             shape: const StadiumBorder(),
@@ -140,7 +141,7 @@ class SocialPage extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const LoginPage()));
+                                  builder: (context) => LoginPage()));
                         },
                         style: ElevatedButton.styleFrom(
                             shape: const StadiumBorder(),

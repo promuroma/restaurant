@@ -1,12 +1,17 @@
-// ignore_for_file: sized_box_for_whitespace, avoid_unnecessary_containers
-
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:restaurant/delayed_animation.dart';
-import 'package:restaurant/main.dart';
+import 'package:restaurant/components/my_button.dart';
+import 'package:restaurant/components/my_textfield.dart';
+import 'package:restaurant/components/square_tile.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  LoginPage({super.key});
+
+  // text editing controllers
+  final usernameController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  // sign user in method
+  void signUserIn() {}
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +20,7 @@ class LoginPage extends StatelessWidget {
         backgroundColor: Colors.white.withOpacity(0),
         leading: IconButton(
           icon: const Icon(
-            Icons.close,
+            Icons.arrow_back,
             color: Colors.black,
             size: 30,
           ),
@@ -24,184 +29,142 @@ class LoginPage extends StatelessWidget {
           },
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 30),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  DelayedAnimation(
-                    delay: 1500,
-                    child: Text(
-                      "Connect email address",
-                      style: GoogleFonts.poppins(
-                        fontSize: 30,
-                        fontWeight: FontWeight.w600,
-                        color: d_blue,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 22,
-                  ),
-                  DelayedAnimation(
-                    delay: 2500,
-                    child: Text(
-                      "It's recommanded to connect your email address for us to better protect your information",
-                      style: GoogleFonts.poppins(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.grey[600]),
-                    ),
-                  ),
-                ],
+      backgroundColor: Colors.grey[300],
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const SizedBox(height: 50),
+
+              // logo
+              const Icon(
+                Icons.lock,
+                size: 100,
               ),
-            ),
-            const SizedBox(height: 35),
-            const LoginForm(),
-            const SizedBox(height: 25),
-            DelayedAnimation(
-              delay: 5500,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 40),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: const StadiumBorder(),
-                    backgroundColor: d_blue,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 125, vertical: 13),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const MyApp()),
-                    );
-                  },
-                  child: Text(
-                    'CONFIRM',
-                    style: GoogleFonts.poppins(
-                      color: Colors.white,
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
+
+              const SizedBox(height: 50),
+
+              // welcome back, you've been missed!
+              Text(
+                'Welcome back you\'ve been missed!',
+                style: TextStyle(
+                  color: Colors.grey[700],
+                  fontSize: 16,
                 ),
               ),
-            ),
-            const SizedBox(height: 90),
-            Align(
-              alignment: Alignment.centerRight,
-              child: Padding(
-                padding: const EdgeInsets.only(right: 35),
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: DelayedAnimation(
-                    delay: 6500,
-                    child: Text(
-                      'SKIP',
-                      style: GoogleFonts.poppins(
-                        color: Colors.black,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                ),
+
+              const SizedBox(height: 25),
+
+              // username textfield
+              MyTextField(
+                controller: usernameController,
+                hintText: 'Username',
+                obscureText: false,
               ),
-            ),
-            DelayedAnimation(
-              delay: 3500,
-              child: Container(
-                child: Column(
+
+              const SizedBox(height: 10),
+
+              // password textfield
+              MyTextField(
+                controller: passwordController,
+                hintText: 'Password',
+                obscureText: true,
+              ),
+
+              const SizedBox(height: 10),
+
+              // forgot password?
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    const SizedBox(
-                      height: 400,
+                    Text(
+                      'Forgot Password?',
+                      style: TextStyle(color: Colors.grey[600]),
                     ),
-                    Container(
-                      width: 350,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            shape: const StadiumBorder(),
-                            backgroundColor: d_blue,
-                            padding: const EdgeInsets.all(13)),
-                        onPressed: () {},
-                        child: const Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.mail_outline_outlined,
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text('CONFIRM')
-                          ],
-                        ),
-                      ),
-                    )
                   ],
                 ),
               ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
 
-class LoginForm extends StatefulWidget {
-  const LoginForm({super.key});
+              const SizedBox(height: 25),
 
-  @override
-  State<LoginForm> createState() => _LoginFormState();
-}
+              // sign in button
+              MyButton(
+                onTap: signUserIn,
+              ),
 
-class _LoginFormState extends State<LoginForm> {
-  var _obscureText = true;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 30),
-      child: Column(
-        children: [
-          DelayedAnimation(
-            delay: 3500,
-            child: TextField(
-              decoration: InputDecoration(
-                  labelText: 'Your Email',
-                  labelStyle: TextStyle(
-                    color: Colors.grey[400],
-                  )),
-            ),
-          ),
-          const SizedBox(height: 30),
-          DelayedAnimation(
-              delay: 4500,
-              child: TextField(
-                obscureText: _obscureText,
-                decoration: InputDecoration(
-                    labelStyle: TextStyle(
-                      color: Colors.grey[400],
-                    ),
-                    labelText: 'Password',
-                    suffixIcon: IconButton(
-                      icon: const Icon(
-                        Icons.visibility,
-                        color: Colors.black,
+              const SizedBox(height: 50),
+
+              // or continue with
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Divider(
+                        thickness: 0.5,
+                        color: Colors.grey[400],
                       ),
-                      onPressed: () {
-                        setState(() {
-                          _obscureText = !_obscureText;
-                        });
-                      },
-                    )),
-              ))
-        ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: Text(
+                        'Or continue with',
+                        style: TextStyle(color: Colors.grey[700]),
+                      ),
+                    ),
+                    Expanded(
+                      child: Divider(
+                        thickness: 0.5,
+                        color: Colors.grey[400],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 50),
+
+              // google + apple sign in buttons
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // google button
+
+                  SquareTile(imagePath: '/images/google.png'),
+
+                  SizedBox(width: 25),
+
+                  // apple button
+                  SquareTile(imagePath: '/images/apple.png')
+                ],
+              ),
+
+              const SizedBox(height: 50),
+
+              // not a member? register now
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Not a member?',
+                    style: TextStyle(color: Colors.grey[700]),
+                  ),
+                  const SizedBox(width: 4),
+                  const Text(
+                    'Register now',
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
